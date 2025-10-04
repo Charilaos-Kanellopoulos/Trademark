@@ -36,6 +36,43 @@ copy "%USERPROFILE%\Downloads\Trademark Radar (1).png" "public\Trademark-Radar.p
 
 After copying, run `npm start` and the app will display the new logo.
 
+Hero images
+-----------
+
+To use the sample hero image shown in the mockups, copy your hero image into the `public` folder and name it `hero-1.jpg`:
+
+PowerShell:
+
+```powershell
+Copy-Item -Path "$env:USERPROFILE\Downloads\hero-1.jpg" -Destination "$PWD\public\hero-1.jpg"
+```
+
+cmd.exe:
+
+```cmd
+copy "%USERPROFILE%\Downloads\hero-1.jpg" "public\hero-1.jpg"
+```
+
+Then start the dev server and the hero will display on the landing page.
+
+Spotlight image
+---------------
+
+If you want the Spotlight section to show the background visual, copy your image into `front/public/spotlight-1.jpg`:
+
+PowerShell:
+
+```powershell
+Copy-Item -Path "$env:USERPROFILE\Downloads\spotlight-1.jpg" -Destination "$PWD\public\spotlight-1.jpg"
+```
+
+cmd.exe:
+
+```cmd
+copy "%USERPROFILE%\Downloads\spotlight-1.jpg" "public\spotlight-1.jpg"
+```
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

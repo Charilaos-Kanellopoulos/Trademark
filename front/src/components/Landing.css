@@ -95,3 +95,19 @@
   .hero-copy h1{font-size:28px}
   .nav-links{display:none}
 }
+
+/* Mobile nav toggle */
+.nav-toggle{display:none;border:none;background:transparent;padding:8px;border-radius:6px;cursor:pointer}
+.nav-toggle .bar{display:block;width:22px;height:2px;background:rgba(255,255,255,0.9);margin:4px 0;border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+
+@media (max-width:720px){
+  .nav-toggle{display:inline-flex;align-items:center}
+  .nav-inner{position:relative}
+  .nav-links{display:block;position:absolute;right:16px;top:64px;background:rgba(50,21,58,0.98);padding:12px;border-radius:8px;min-width:200px;box-shadow:0 8px 24px rgba(2,6,23,0.2);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .18s ease,transform .18s ease}
+  .nav-links.open{opacity:1;transform:translateY(0);pointer-events:auto}
+  .nav-links li{margin:6px 0}
+  .nav-link{color:#fff;padding:8px 12px;display:block}
+  .nav-toggle.open .bar:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .nav-toggle.open .bar:nth-child(2){opacity:0}
+  .nav-toggle.open .bar:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+}

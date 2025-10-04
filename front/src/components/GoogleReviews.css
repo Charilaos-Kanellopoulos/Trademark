@@ -1,0 +1,29 @@
+.google-reviews{padding:28px 0}
+.reviews-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.reviews-title{font-size:22px;margin:0;color:#07123a}
+.reviews-summary{display:flex;align-items:center;gap:12px}
+.reviews-summary .avg{font-size:20px;font-weight:700}
+.reviews-summary .stars{color:#f59e0b}
+.reviews-summary .count{font-size:13px}
+
+.reviews-carousel{display:flex;align-items:center;gap:12px}
+.reviews-viewport{overflow:hidden;flex:1}
+.reviews-track{display:flex;gap:16px;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.review-card{min-width:320px;background:white;padding:16px;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.06);flex:0 0 auto}
+.review-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.review-name{color:#07123a}
+.review-rating{color:#f59e0b}
+.review-text{color:#374151;margin:0 0 8px}
+.review-date{font-size:13px}
+
+.carousel-control{background:transparent;border:none;font-size:28px;color:#07123a;width:44px;height:44px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.carousel-control:hover{background:rgba(7,18,58,0.04)}
+
+.carousel-indicators{display:flex;gap:8px;justify-content:center;margin-top:12px}
+.carousel-indicators .dot{width:10px;height:10px;border-radius:50%;background:#e6e6e6;border:none}
+.carousel-indicators .dot.active{background:#07123a}
+
+@media (min-width:900px){
+  .review-card{flex:1 1 calc(33% - 16px);min-width:240px}
+  .reviews-track{gap:24px}
+}

@@ -1,6 +1,9 @@
 import React from 'react';
 import './Landing.css';
 import Hero from './Hero';
+import Numbers from './Numbers';
+import ContactForm from './ContactForm';
+import GoogleReviews from './GoogleReviews';
 import TabBlock from './TabBlock';
 import Spotlight from './Spotlight';
 
@@ -18,14 +21,18 @@ const Landing: React.FC = () => {
             </section>
             <Spotlight
                 image={'/spotlight-1.jpg'}
-                label={'SPOTLIGHT ON:'}
+                label={''}
                 title={'Manufacturing sector faces mounting tribunal pressures<br/>amid economic uncertainty'}
                 summary={'Our latest research reveals that manufacturing businesses across England and Wales are grappling with a rising tide of employment tribunal claims.'}
-                authorName={'Catherine Johnson'}
-                authorRole={'Partner'}
+                authorName={'User'}
+                authorRole={'Admin'}
                 cta={'Read more'}
             />
 
+            <GoogleReviews />
+
+            <Numbers title={'Trademarkt in numbers'} description={'Discover the numbers behind Trademarkt, our people and our growth.'} />
+            <ContactForm />
         </div>
     );
 };

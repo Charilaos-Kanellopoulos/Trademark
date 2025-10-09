@@ -1,14 +1,13 @@
 import React from 'react';
 import Nav from './Nav';
 import Footer from './Footer';
+import './Landing.css';
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   return (
-    <div className="d-flex flex-column min-vh-100 app-layout">
+    <div className="app-layout">
       <Nav />
-      <div className="flex-grow-1">
-        <main>{children}</main>
-      </div>      
+      <main className="site-main">{children}</main>
       <Footer />
     </div>
   );

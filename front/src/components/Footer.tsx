@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div className="container footer-inner">
         <div>© {new Date().getFullYear()} Trademark</div>
-        <div className="footer-links">Privacy · Terms · Contact</div>
+        <div className="footer-links"></div>
       </div>
     </footer>
   );

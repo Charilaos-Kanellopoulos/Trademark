@@ -1,0 +1,74 @@
+:root{
+  --ink:#2b2f2f;
+  --muted:#3e4a4a;
+  --btn:#29aae1;          /* teal όπως στο mockup */
+  --btn-hover:#15294a;
+  --rule:#cfcfcf;
+  --container:1100px;
+}
+
+/* Περιοχή */
+.hero-intro{
+  
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  padding:48px 16px 56px;
+}
+
+/* Κεντρικό container */
+.hero-intro__container{
+  width:100%;
+  max-width:var(--container);
+  text-align:center;
+}
+
+/* Τίτλος (με serif, μεγάλο line-height) */
+.hero-intro__title{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  color: var(--dark-blue);
+  font-size: clamp(26px, 4.8vw, 40px);
+  line-height: 1.15;
+  margin: 0 0 22px;
+}
+
+/* Λεπτή διαχωριστική γραμμή κάτω από τίτλο */
+.hero-intro__rule{
+  width: 96px;
+  height: 0;
+  border: none;
+  border-top: 2px solid var(--rule);
+  margin: 0 auto 28px;
+}
+
+/* Περιγραφή */
+.hero-intro__text{
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--muted);
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.6;
+  max-width: 980px;
+  margin: 0 auto 34px;
+}
+
+/* Κουμπί */
+.hero-intro__btn{
+  display:inline-block;
+  background: var(--btn);
+  color:#fff;
+  border:0;
+  border-radius: 4px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor:pointer;
+  transition: background .15s ease, transform .06s ease;
+}
+.hero-intro__btn:hover{ background: var(--btn-hover); }
+.hero-intro__btn:active{ transform: translateY(1px); }
+
+/* Μικρές οθόνες: μεγαλύτερο padding για ανάσα */
+@media (max-width: 640px){
+  .hero-intro{ padding: 40px 14px 48px; }
+}

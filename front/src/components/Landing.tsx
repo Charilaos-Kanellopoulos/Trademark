@@ -1,38 +1,58 @@
 import React from 'react';
 import './Landing.css';
-import Hero from './Hero';
-import Numbers from './Numbers';
-import ContactForm from './ContactForm';
-import GoogleReviews from './GoogleReviews';
-import TabBlock from './TabBlock';
-import Spotlight from './Spotlight';
+import Hero from './Hero/Hero';
+import Numbers from './Numbers/Numbers';
+import ContactBanner from './ContactBanner/ContactBanner';
+import InsightsGrid from './InsightsGrid/InsightsGrid';
+import HeroIntro from './HeroIntro/HeroIntro';
+import Operation from './Operation/Operation';
+import Service from './Service/Service';
 
 const Landing: React.FC = () => {
     return (
         <div className="landing">
             {/* Hero image section (use /hero-1.jpg) */}
             {/* Replace title/subtitle with the ones you want for each hero */}
-            <Hero image={'/hero-1.jpg'} title={'Next Level Law'} subtitle={'Whatever the challenge, we are here for you.'} />
+            <Hero video={'./section-1.mp4'}
+                title={'Έχεις σήμα ; Προστάτευσέ το.'}
+                subtitle={'Μια υπηρεσία, μία ολοκληρωμένη προστασία.'} />
             {/* Tabbed content section similar to image 3 */}
-            <section className="tabbed-section">
-                <div className="container">
-                    <TabBlock />
-                </div>
-            </section>
-            <Spotlight
-                image={'/spotlight-1.jpg'}
-                label={''}
-                title={'Manufacturing sector faces mounting tribunal pressures<br/>amid economic uncertainty'}
-                summary={'Our latest research reveals that manufacturing businesses across England and Wales are grappling with a rising tide of employment tribunal claims.'}
-                authorName={'User'}
-                authorRole={'Admin'}
-                cta={'Read more'}
+            <HeroIntro />
+
+
+            <Numbers title={'Το Trademark Radar σε νούμερα'} description={'Ανακαλύψτε τα νούμερα πίσω από το Trademark Radar:'} />
+            <Operation
+                title='Αναλύοντας το Trademark Radar'
+                subtitle='Η νέα εποχή στην προστασία σημάτων. Δείτε περισσότερα για την υπηρεσία.'
+                items={[
+                    {
+                        image: "/imgs/why.png",
+                        ribbonTitle: "Γιατί δημιουργήθηκε ;",
+                        caption: "Γιατί δημιουργήθηκε ;",
+                    },
+                    {
+                        image: "/imgs/who.png",
+                        ribbonTitle: "Σε ποιους \nαπευθύνεται ;",
+                        caption: "Σε ποιους απευθύνεται ;"
+                    },
+                    {
+                        image: "/imgs/how.png",
+                        ribbonTitle: "Πώς λειτουργεί ;",
+                        caption: "Πώς λειτουργεί ;"
+                    },
+                ]}
             />
+            <Service items={[
+                { tier: 'BRONZE', yearsLabel: '3 έτος', priceLabel: '124€', image: '/logo/BRONZE.png' },
+                { tier: 'SILVER', yearsLabel: '5 έτη', priceLabel: '176.8€', image: '/logo/SILVER.png' },
+                { tier: 'GOLD', yearsLabel: '∞ έτη', priceLabel: '248€', image: '/logo/GOLD.png' },
+            ]} />
+            <div className="container">
+                <InsightsGrid />
 
-            <GoogleReviews />
-
-            <Numbers title={'Trademarkt in numbers'} description={'Discover the numbers behind Trademarkt, our people and our growth.'} />
-            <ContactForm />
+            </div>
+            
+            <ContactBanner />
         </div>
     );
 };

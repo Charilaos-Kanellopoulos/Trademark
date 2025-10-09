@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import emailjs from '@emailjs/browser';
 import "./ContactBanner.css";
 
 type FormState = {
@@ -22,11 +23,39 @@ const initialState: FormState = {
 const ContactBanner: React.FC = () => {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_m0ah2gq';
+  const TEMPLATE_ADMIN = process.env.REACT_APP_EMAILJS_TEMPLATE_ADMIN || 'template_ay3jcad';
+  const TEMPLATE_USER = process.env.REACT_APP_EMAILJS_TEMPLATE_USER || 'template_c1f7ro8';
+  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '08heL3LGJTrXR79-N';
+  const ADMIN_EMAIL = process.env.REACT_APP_ADMIN_EMAIL || '';
+
+  useEffect(() => {
+    // initialize emailjs if a public key is provided
+    try {
+      if (PUBLIC_KEY && PUBLIC_KEY !== 'public_xxx') {
+        (emailjs as any).init(PUBLIC_KEY);
+      }
+    } catch (err) {
+      console.warn('EmailJS init failed', err);
+    }
+  }, [PUBLIC_KEY]);
+
+  // auto-clear error messages after a short delay
+  useEffect(() => {
+    if (!errorMsg) return;
+    const t = setTimeout(() => setErrorMsg(null), 6000);
+    return () => clearTimeout(t);
+  }, [errorMsg]);
 
   const onChange =
     (key: keyof FormState) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setForm((prev) => ({ ...prev, [key]: e.target.value }));
+      // clear any existing error when the user edits the form
+      if (errorMsg) setErrorMsg(null);
     };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -38,17 +67,58 @@ const ContactBanner: React.FC = () => {
       return;
     }
 
-    // Παράδειγμα αποστολής σε Spring Boot endpoint
-    // fetch("/api/contact-requests", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(form),
-    // });
+    const templateParams = {
+      firstName: form.firstName,
+      lastName: form.lastName,
+      email: form.email,
+      phone: form.phone,
+      callDate: form.callDate,
+      callTime: form.callTime,
+      // ensure the admin template receives a recipient address
+      // EmailJS templates commonly expect 'to_email' or 'recipient'
+      to_email: 'kanel.xaris@gmail.com',
+      reply_to: form.email,
+    };
 
-    console.log("Form payload:", form);
-    setForm(initialState);
-    setSubmitted(false);
-    alert("Ευχαριστούμε! Θα επικοινωνήσουμε στη ζητούμενη ημέρα και ώρα.");
+    setErrorMsg(null);
+    setSending(true);
+
+    (async () => {
+      try {
+        // send to admin
+        const adminRes = await emailjs.send(SERVICE_ID, TEMPLATE_ADMIN, templateParams, PUBLIC_KEY);
+        console.log('EmailJS admin response', adminRes);
+
+        // send confirmation to user
+        const userParams = {
+          to_name: `${form.firstName} ${form.lastName}`,
+          to_email: form.email,
+          firstName: form.firstName,
+          callDate: form.callDate,
+          callTime: form.callTime,
+        };
+        const userRes = await emailjs.send(SERVICE_ID, TEMPLATE_USER, userParams, PUBLIC_KEY);
+        console.log('EmailJS user response', userRes);
+
+        setForm(initialState);
+        setSubmitted(false);
+        setSending(false);
+        setErrorMsg(null);
+        alert('Ευχαριστούμε! Το μήνυμα στάλθηκε — θα επικοινωνήσουμε στη ζητούμενη ημέρα και ώρα.');
+      } catch (err: any) {
+        console.error('EmailJS error', err);
+        let message = 'Παρουσιάστηκε πρόβλημα κατά την αποστολή.';
+        if (err) {
+          if (err.text) message = err.text;
+          else if (err.message) message = err.message;
+          else if (err.status) message = `Status ${err.status}`;
+        }
+        setErrorMsg(message + ' Παρακαλώ δοκιμάστε ξανά ή επικοινωνήστε απευθείας στο email του διαχειριστή.');
+        setSending(false);
+        setSubmitted(false);
+      }
+    })();
+
   };
 
   return (
@@ -148,10 +218,11 @@ const ContactBanner: React.FC = () => {
             />
           </label>
 
-          <button className="contact-banner__submit" type="submit">
-            Αποστολή
+          <button className="contact-banner__submit" type="submit" disabled={sending}>
+            {sending ? 'Αποστολή...' : 'Αποστολή'}
           </button>
         </form>
+        {/* {errorMsg && <div className="contact-banner__error" role="alert">{errorMsg}</div>} */}
       </div>
     </div>
   );

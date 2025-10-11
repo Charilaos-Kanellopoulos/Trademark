@@ -21,7 +21,7 @@
     transform: translateY(-50%);
   }
 /* Responsive brand images: keep aspect ratio and limit height */
-.brand-img{height:72px;width:auto;object-fit:contain}
+.brand-img{height:80px;width:auto;object-fit:contain}
 .brand-name-img{height:36px;width:auto;object-fit:contain}
 .brand-name { font-weight:700; color:var(--dark-blue); font-family: 'Times New Roman', Times, serif; }
 .site-nav{background:var(--bg);color:var(--dark-blue)}

@@ -1,4 +1,18 @@
 {
+  "private": true,
+  "workspaces": [
+    "front"
+  ],
+  "scripts": {
+    "heroku-prebuild": "npm --prefix front install",
+    "heroku-postbuild": "npm --prefix front run build",
+    "start:heroku": "npm --prefix front start",
+    "build": "npm --prefix front run build",
+    "start": "npm --prefix front start"
+  },
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "typescript": "^5.9.3"
   }

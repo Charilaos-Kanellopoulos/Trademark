@@ -5,7 +5,7 @@ export type PackageItem = {
   tier: "BRONZE" | "SILVER" | "GOLD" | string;
   yearsLabel: string;
   priceLabel: string;
-  image: string;
+  logoImage: string;
 };
 
 type Props = {
@@ -22,6 +22,14 @@ const tierToClass = (tier: string) =>
     : tier.toLowerCase().includes("gold")
     ? "gold"
     : "default";
+
+const iconForTier = (tier: string) => {
+  const t = tier.toLowerCase();
+  if (t.includes("bronze")) return <PencilIcon />;
+  if (t.includes("silver")) return <AtomIcon />;
+  if (t.includes("gold")) return <DiamondIcon />;
+  return <PencilIcon />;
+};
 
 const Service: React.FC<Props> = ({
   title = "Πακέτα Trademark Radar",
@@ -43,26 +51,10 @@ const Service: React.FC<Props> = ({
     return () => io.disconnect();
   }, []);
 
-  // parallax κίνηση εικόνας στο hover
-  const onMouseMove = (e: React.MouseEvent) => {
-    const card = e.currentTarget as HTMLElement;
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    const img = card.querySelector<HTMLElement>(".pkg__image");
-    if (img) img.style.transform = `scale(1.06) translate(${x * 10}px, ${y * 10}px)`;
-  };
-  const onMouseLeave = (e: React.MouseEvent) => {
-    const card = e.currentTarget as HTMLElement;
-    const img = card.querySelector<HTMLElement>(".pkg__image");
-    if (img) img.style.transform = "";
-  };
-
   return (
     <section className="pkg">
       <div className="pkg__container" ref={containerRef}>
         <h2 className="pkg__title">{title}</h2>
-        <hr className="pkg__rule" />
         <p className="pkg__subtitle">{subtitle}</p>
 
         <div className="pkg__grid">
@@ -74,31 +66,33 @@ const Service: React.FC<Props> = ({
                 className={`pkg__card ${tierClass} ${
                   i === 0 ? "enter-left" : i === 1 ? "enter-up" : "enter-right"
                 }`}
-                onMouseMove={onMouseMove}
-                onMouseLeave={onMouseLeave}
               >
-                {/* gradient border & shine */}
+                {/* shine sweep effect */}
                 <span className="pkg__shine" aria-hidden />
 
-                {/* accent bar ανά tier */}
+                {/* colored accent bar at top */}
                 <span className="pkg__accent" aria-hidden />
-
-                {/* μικρό badge με gradient */}
-                <span className="pkg__badge" aria-hidden />
-
-                <div
-                  className="pkg__image"
-                  style={{ backgroundImage: `url(${p.image})` }}
-                  aria-hidden="true"
-                />
-                <div className="pkg__body">
-                  <h3 className="pkg__tier">{p.tier}</h3>
+                {/* logo image in top right */}
+                <div className="pkg__logo">
+                  <img src={p.logoImage} alt={`${p.tier} logo`} />
                 </div>
 
+                {/* card content */}
+                <div className="pkg__body">
+                  <h3 className="pkg__tier">{p.tier}</h3>
+                  <div className="pkg__features">
+                    <div>24/7 Support</div>
+                    <div>Ετή</div>
+                  </div>
+                </div>
+
+                {/* pricing overlay */}
                 <div className="pkg__overlay">
                   <div className="pkg__overlay-inner">
                     <div className="pkg__years">{p.yearsLabel}</div>
-                    <div className="pkg__price">{p.priceLabel}</div>
+                    <div className="pkg__price-container">
+                      <span className="pkg__amount">{p.priceLabel}</span>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -111,3 +105,32 @@ const Service: React.FC<Props> = ({
 };
 
 export default Service;
+
+// ===== SVG icons to match screenshot style =====
+function PencilIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20h9"/>
+      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+    </svg>
+  );
+}
+
+function AtomIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="1"/>
+      <path d="M4 7c3 3 13 3 16 0M4 17c3-3 13-3 16 0"/>
+      <path d="M7 4c3 3 3 13 0 16M17 4c-3 3-3 13 0 16"/>
+    </svg>
+  );
+}
+
+function DiamondIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 3h12l4 5-10 13L2 8l4-5z"/>
+      <path d="M2 8h20M7 3l5 13L17 3"/>
+    </svg>
+  );
+}

@@ -9,9 +9,6 @@ const HeroIntro: React.FC = () => {
           To Trademark Radar ειναι ο άγρυπνος φύλακας<br />
           του σήματός σας
         </h1>
-
-        <hr className="hero-intro__rule" />
-
         <p className="hero-intro__text">
           Το Trademark Radar είναι μια υπηρεσία που σκανάρει καθημερινά τα εμπορικά
           σήματα του ανταγωνισμού και σας ενημερώνει έγκαιρα για να λάβετε τα σωστά 

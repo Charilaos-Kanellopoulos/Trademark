@@ -25,7 +25,6 @@ our most recent reports and reviews.`,
     <section className="deep">
       <div className="deep__container">
         <h2 className="deep__title">{title}</h2>
-        <hr className="deep__rule" />
         <p className="deep__subtitle">{subtitle}</p>
 
         <div className="deep__grid">

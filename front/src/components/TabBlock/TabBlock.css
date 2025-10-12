@@ -36,51 +36,6 @@
     margin: 0 auto 34px;
 }
 
-.tabblock__tabs {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 12px;
-}
-
-.tabblock__tab {
-    background: var(--tab-bg);
-    border: 0;
-    /* no border corners requested */
-    color: var(--ink);
-    padding: 10px 14px;
-    border-radius: var(--radius);
-    cursor: pointer;
-    font-weight: 700;
-}
-
-.tabblock__tab.is-active {
-    background: #e9f7ff;
-    color: var(--ink);
-    box-shadow: 0 2px 10px rgba(2, 6, 23, 0.06);
-}
-
-.tabblock__panel {
-    background: #fff;
-    border: 0;
-    border-radius: var(--radius);
-    padding: 18px;
-    box-shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
-}
-
-.tabblock__title {
-    font-size: 26px;
-    color: var(--ink);
-    margin: 0 0 8px;
-}
-
-.tabblock__desc {
-    font-size: 18px;
-    color: var(--muted);
-    margin: 0;
-}
-
 @media (max-width:720px) {
     .tabblock {
         margin: 24px auto;

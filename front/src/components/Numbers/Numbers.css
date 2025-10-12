@@ -1,22 +1,24 @@
-
 .numbers {
   padding: 64px 0;
   background: var(--bg);
 }
 
 .numbers-title {
-  text-align: center;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 26px;
+  font-weight: 400;
   color: var(--dark-blue);
-  margin-bottom: 8px;
+  font-size: clamp(26px, 4.8vw, 40px);
+  line-height: 1.15;
+  margin: 0 0 22px;
 }
 
 .numbers-description {
-  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
   color: var(--muted);
-  font-size: 18px;
-  margin-bottom: 32px;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.6;
+  max-width: 980px;
+  margin: 0 auto 34px;
 }
 
 .numbers-grid {

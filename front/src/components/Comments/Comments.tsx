@@ -62,19 +62,35 @@ const reviews: Review[] = [
 ];
 
 const Comments: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(3);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Minimum swipe distance required to trigger a slide change
+  const minSwipeDistance = 50;
 
   // Calculate total number of slides
   const totalSlides = Math.ceil(reviews.length / cardsToShow);
-  const currentSlide = Math.floor(currentIndex / cardsToShow);
 
   useEffect(() => {
     const updateCardsToShow = () => {
-      const newCardsToShow = window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+      const width = window.innerWidth;
+      let newCardsToShow;
+      
+      if (width <= 480) {
+        newCardsToShow = 1; // Mobile
+      } else if (width <= 768) {
+        newCardsToShow = 1; // Small tablet
+      } else if (width <= 1024) {
+        newCardsToShow = 2; // Tablet
+      } else {
+        newCardsToShow = 3; // Desktop
+      }
+      
       setCardsToShow(newCardsToShow);
       // Reset to beginning when cards to show changes to avoid out of bounds
-      setCurrentIndex(0);
+      setCurrentSlide(0);
     };
 
     updateCardsToShow();
@@ -84,35 +100,52 @@ const Comments: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const nextIndex = prevIndex + cardsToShow;
-        return nextIndex >= reviews.length ? 0 : nextIndex;
+      setCurrentSlide((prevSlide: number) => {
+        return (prevSlide + 1) % totalSlides;
       });
-    }, 4000);
+    }, 5000); // Increased to 5 seconds for better mobile UX
 
     return () => clearInterval(interval);
-  }, [cardsToShow]);
+  }, [totalSlides]);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      const nextIndex = prevIndex + cardsToShow;
-      return nextIndex >= reviews.length ? 0 : nextIndex;
+    setCurrentSlide((prevSlide: number) => {
+      return (prevSlide + 1) % totalSlides;
     });
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex === 0) {
-        // Go to last complete slide
-        const lastCompleteSlide = Math.floor((reviews.length - 1) / cardsToShow) * cardsToShow;
-        return lastCompleteSlide;
-      }
-      return prevIndex - cardsToShow;
+    setCurrentSlide((prevSlide: number) => {
+      return prevSlide === 0 ? totalSlides - 1 : prevSlide - 1;
     });
   };
 
   const goToSlide = (slideIndex: number) => {
-    setCurrentIndex(slideIndex * cardsToShow);
+    setCurrentSlide(slideIndex);
+  };
+
+  // Touch handlers for mobile swipe
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
   };
 
   const renderStars = (rating: number) => {
@@ -121,6 +154,13 @@ const Comments: React.FC = () => {
         ★
       </span>
     ));
+  };
+
+  // Get current reviews to display
+  const getCurrentReviews = () => {
+    const startIndex = currentSlide * cardsToShow;
+    const endIndex = startIndex + cardsToShow;
+    return reviews.slice(startIndex, endIndex);
   };
 
   return (
@@ -133,16 +173,15 @@ const Comments: React.FC = () => {
             &#8249;
           </button>
           
-          <div className="comments__track-container">
-            <div 
-              className="comments__track"
-              style={{
-                transform: `translateX(-${(currentIndex / reviews.length) * 100}%)`,
-                width: `${reviews.length * (100 / cardsToShow)}%`
-              }}
-            >
-              {reviews.map((review, i) => (
-                <div key={i} className="comments__card" style={{ width: `${100 / reviews.length}%` }}>
+          <div 
+            className="comments__track-container"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
+            <div className="comments__cards-container">
+              {getCurrentReviews().map((review, index) => (
+                <div key={currentSlide * cardsToShow + index} className="comments__card">
                   <div className="comments__rating">
                     {renderStars(review.rating)}
                   </div>
@@ -154,7 +193,6 @@ const Comments: React.FC = () => {
                   <p className="comments__comment">{review.comment}</p>
                   
                   <div className="comments__author">
-                    
                     <span className="comments__author-name">{review.author}</span>
                   </div>
                 </div>

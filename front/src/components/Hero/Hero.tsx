@@ -122,7 +122,7 @@ const Hero: React.FC<Props> = ({
           )}
 
           <div className="hero-cta">
-            <a href="#contact" className="button-hero-cta">
+            <a href="#why" className="button-hero-cta">
               Περισσότερες Πληροφορίες
             </a>
           </div>

@@ -122,7 +122,16 @@ const ContactBanner: React.FC = () => {
   };
 
   return (
-    <div className="contact-banner">
+    <div id="contact" className="contact-banner">
+      {/* Background video */}
+      <video className="contact-banner-video" autoPlay loop muted playsInline>
+        <source src="/section-6.mp4" type="video/mp4" />
+        Το πρόγραμμα περιήγησής σας δεν υποστηρίζει video.
+      </video>
+      
+      {/* Overlay */}
+      <div className="contact-banner-overlay"></div>
+      
       <div className="contact-banner__container">
         <h2 className="contact-banner__title">Φορμά Επικοινωνίας</h2>
 

@@ -52,7 +52,16 @@ const Service: React.FC<Props> = ({
   }, []);
 
   return (
-    <section className="pkg">
+    <section id="pricing" className="pkg">
+      {/* Background video */}
+      <video className="pkg-video" autoPlay loop muted playsInline>
+        <source src="/section-6.mp4" type="video/mp4" />
+        Το πρόγραμμα περιήγησής σας δεν υποστηρίζει video.
+      </video>
+      
+      {/* Overlay */}
+      <div className="pkg-overlay"></div>
+      
       <div className="pkg__container" ref={containerRef}>
         <h2 className="pkg__title">{title}</h2>
         <p className="pkg__subtitle">{subtitle}</p>

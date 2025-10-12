@@ -3,61 +3,44 @@ import "./Comments.css";
 
 type Review = {
   rating: number;
-  timeAgo: string;
-  title: string;
   comment: string;
   author: string;
-  
+
 };
 
 const reviews: Review[] = [
   {
     rating: 5,
-    timeAgo: "1 year ago",
-    title: "Excellent trademark protection!",
-    comment: "Great service and very professional team. If you want to protect your trademark effectively, this is the place to go.",
-    author: "Maria Papadopoulou"
-   
+    comment: "Εξαιρετικοί επαγγελματίες στην μέχρι τώρα συνεργασία μας. Σωστές κατευθύνσεις και τήρηση χρονοδιαγράμματος. Σημαντικό ότι υιοθετούν συνεχή ενημέρωση ως προς την εξέλιξη της διαδικασίας σε κάθε στάδιο υλοποίησης.",
+    author: "Κυριάκος Φ."
   },
   {
     rating: 5,
-    timeAgo: "8 months ago", 
-    title: "Outstanding support service!",
-    comment: "The Trademark Radar team provided exceptional guidance throughout the entire process. Highly recommended for any business.",
-    author: "Dimitris Kostas"
-    
-  },
-  {
-    rating: 4,
-    timeAgo: "6 months ago",
-    title: "Professional and reliable",
-    comment: "Very satisfied with the service quality. The monitoring system works perfectly and alerts are sent promptly.",
-    author: "Sofia Alexandrou"
-    
+    comment: "Άμεση και εύκολη συνεργασία μαζί τους. Πολύ ευγενικοί στην επικοινωνία.",
+    author: "Νίκος Μ."
+
   },
   {
     rating: 5,
-    timeAgo: "3 months ago",
-    title: "Best trademark monitoring!",
-    comment: "Comprehensive protection for our brand. The team is always available to help and provide expert advice.",
-    author: "Nikos Petridis"
-    
+    comment: "Άμεση εξυπηρέτηση, υπευθυνότητα, επαγγελματική νοοτροπία",
+    author: "Παρασκευή Τ."
+
   },
   {
     rating: 5,
-    timeAgo: "2 months ago",
-    title: "Highly professional service",
-    comment: "Excellent experience from start to finish. The trademark registration process was smooth and well-guided.",
-    author: "Elena Stavrou"
-    
+    comment: "Σαφής πληροφόρηση, ευγένεια, ταχύτητα και καλή τιμή",
+    author: "Αστέριος Π."
   },
   {
-    rating: 4,
-    timeAgo: "1 month ago",
-    title: "Great value for money",
-    comment: "Quality service at competitive prices. The monitoring alerts have saved us from potential trademark conflicts.",
-    author: "Kostas Nikolaou"
-    
+    rating: 5,
+    comment: "Πολύτιμοι συνεργάτες με αξιοπιστία, υπευθυνότητα και άμεση εξυπηρέτηση. Επαρκής ενημέρωση του πελάτη με διακριτικότητα.",
+    author: "Αγγελική Φ."
+
+  },
+  {
+    rating: 5,
+    comment: "H συνεργασία μας ήταν πολύ καλή. Είναι γρήγοροι και συνεπείς. Σε γλυτώνουν από χρόνο και ψάξιμο και έχεις άμεσα μόλις ζητήσεις την εξέλιξη του θέματός σου. Θα συνεργαζόμουνα ξανά ευχαρίστως μαζί τους.",
+    author: "Ασπασία Κ."
   }
 ];
 
@@ -77,7 +60,7 @@ const Comments: React.FC = () => {
     const updateCardsToShow = () => {
       const width = window.innerWidth;
       let newCardsToShow;
-      
+
       if (width <= 480) {
         newCardsToShow = 1; // Mobile
       } else if (width <= 768) {
@@ -87,7 +70,7 @@ const Comments: React.FC = () => {
       } else {
         newCardsToShow = 3; // Desktop
       }
-      
+
       setCardsToShow(newCardsToShow);
       // Reset to beginning when cards to show changes to avoid out of bounds
       setCurrentSlide(0);
@@ -136,7 +119,7 @@ const Comments: React.FC = () => {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
@@ -167,13 +150,13 @@ const Comments: React.FC = () => {
     <section className="comments">
       <div className="comments__container">
         <h2 className="comments__title">Τι είπαν για την ομάδα του Trademark Radar;</h2>
-        
+
         <div className="comments__carousel">
           <button className="comments__nav comments__nav--prev" onClick={prevSlide}>
             &#8249;
           </button>
-          
-          <div 
+
+          <div
             className="comments__track-container"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
@@ -185,13 +168,8 @@ const Comments: React.FC = () => {
                   <div className="comments__rating">
                     {renderStars(review.rating)}
                   </div>
-                  
-                  <div className="comments__time">{review.timeAgo}</div>
-                  
-                  <h3 className="comments__card-title">{review.title}</h3>
-                  
                   <p className="comments__comment">{review.comment}</p>
-                  
+
                   <div className="comments__author">
                     <span className="comments__author-name">{review.author}</span>
                   </div>
@@ -199,7 +177,7 @@ const Comments: React.FC = () => {
               ))}
             </div>
           </div>
-          
+
           <button className="comments__nav comments__nav--next" onClick={nextSlide}>
             &#8250;
           </button>

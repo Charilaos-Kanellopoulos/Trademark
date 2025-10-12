@@ -32,6 +32,7 @@
   color: var(--white);
   padding: 40px 20px;
   font-family: 'Times New Roman', Times, serif;
+  text-align: left;
 }
 
 .hero-text h1 {
@@ -39,12 +40,14 @@
   margin: 0 0 12px;
   font-weight: 700;
   font-family: 'Times New Roman', Times, serif;
+  text-align: left;
 }
 
 .hero-text .subtitle {
   font-size: 26px;
   opacity: 0.9;
   font-family: 'Times New Roman', Times, serif;
+  text-align: left;
 }
 
 /* Typewriter Animation Styles */

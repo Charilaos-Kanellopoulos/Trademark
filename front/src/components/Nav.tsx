@@ -59,10 +59,13 @@ const Nav: React.FC = () => {
       <div className="nav-inner">
         <div className="brand">
           <a href="/" aria-label="Trademark home">
-            <img className="brand-img" src="/Trademark-Radar.png" alt="Company logo" />
+            <img 
+              className="brand-img" 
+              src={scrolled ? "/light-blue-logo.png" : "/white-logo.png"} 
+              alt="Trademark Radar logo" 
+            />
           </a>
           <span className='brand-name'>Trademark Radar</span>
-
         </div>
 
         <button

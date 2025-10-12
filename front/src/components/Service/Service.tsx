@@ -55,7 +55,7 @@ const Service: React.FC<Props> = ({
     <section id="pricing" className="pkg">
       {/* Background video */}
       <video className="pkg-video" autoPlay loop muted playsInline>
-        <source src="/section-6.mp4" type="video/mp4" />
+        <source src="/section-1.mp4" type="video/mp4" />
         Το πρόγραμμα περιήγησής σας δεν υποστηρίζει video.
       </video>
       

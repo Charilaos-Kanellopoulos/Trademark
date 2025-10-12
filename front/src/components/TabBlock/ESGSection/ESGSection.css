@@ -58,7 +58,7 @@
   flex-direction: column;
   align-items: center;
   background: #f8fafc;
-  border: 2px solid #e2e8f0;
+  color: var(--light-blue);
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
@@ -69,15 +69,12 @@
   border-color: var(--light-blue);
   background: #f1f5f9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
 .esg-button.active {
   border-color: var(--light-blue);
-  background: linear-gradient(135deg, var(--light-blue), var(--dark-blue));
-  color: white;
+  color: var(--dark-blue);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
 }
 
 .esg-icon {
@@ -98,10 +95,11 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
+  color : var(--dark-blue);
 }
 
-.esg-button.active .esg-button-text {
-  color: white;
+.esg-button.active .esg-button-text::after {
+  color: var(--dark-blue);
 }
 
 

@@ -9,7 +9,6 @@
 
 /* Περιοχή */
 .hero-intro{
-  
   background:#fff;
   display:flex;
   justify-content:center;
@@ -55,17 +54,17 @@
 /* Κουμπί */
 .hero-intro__btn{
   display:inline-block;
-  background: var(--btn);
-  color:#fff;
+  text-decoration:none;
+  background: var(--dark-blue);
+  text-align: center;
+  color:var(--white);
   border:0;
-  border-radius: 4px;
-  padding: 14px 28px;
-  font-size: 18px;
-  font-weight: 600;
+  padding: 15px 32px;
+  font-size: 16px;
   cursor:pointer;
   transition: background .15s ease, transform .06s ease;
 }
-.hero-intro__btn:hover{ background: var(--btn-hover); }
+.hero-intro__btn:hover{ background: var(--white); color: var(--dark-blue); }
 .hero-intro__btn:active{ transform: translateY(1px); }
 
 /* Μικρές οθόνες: μεγαλύτερο padding για ανάσα */

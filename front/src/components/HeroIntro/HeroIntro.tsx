@@ -15,8 +15,17 @@ const HeroIntro: React.FC = () => {
           μέτρα.
         </p>
 
-        <button className="hero-intro__btn" type="button">
-          Πώς λειτουργεί ;
+        <button
+          className="hero-intro__btn"
+          type="button"
+          onClick={() => {
+        const el = document.getElementById("why");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+          }}
+        >
+          Περισσότερες πληροφορίες
         </button>
       </div>
     </section>

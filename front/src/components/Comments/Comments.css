@@ -71,12 +71,26 @@
   border-radius: var(--radius);
   padding: 24px;
   box-shadow: var(--shadow);
-  min-height: 280px;
+  min-height: 320px;
+  max-height: 320px;
+  height: 320px;
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-  max-width: 350px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 0 0 320px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.comments__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-color: #3b82f6;
 }
 
 /* Star Rating */
@@ -84,6 +98,7 @@
   display: flex;
   gap: 2px;
   margin-bottom: 12px;
+  justify-content: center;
 }
 
 .star {
@@ -117,14 +132,19 @@
   font-size: 16px;
   line-height: 1.5;
   color: #4b5563;
-  margin: 0 0 20px;
+  margin: 0 0 15px;
   flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Author Section */
 .comments__author {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   margin-top: auto;
 }
@@ -230,6 +250,12 @@
   
   .comments__card {
     min-height: 300px;
+    max-height: 300px;
+    height: 300px;
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    flex: 0 0 300px;
   }
 }
 
@@ -286,11 +312,15 @@
   
   .comments__card {
     min-height: 280px;
+    max-height: 280px;
+    height: 280px;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    flex: 0 0 280px;
     padding: 20px;
     border-radius: 12px;
     margin: 0 10px;
-    max-width: none;
-    width: 100%;
   }
   
   .comments__card-title {
@@ -351,9 +381,13 @@
   .comments__card {
     margin: 0 8px;
     min-height: 260px;
+    max-height: 260px;
+    height: 260px;
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
+    flex: 0 0 260px;
     padding: 18px;
-    max-width: none;
-    width: 100%;
   }
   
   .comments__card-title {

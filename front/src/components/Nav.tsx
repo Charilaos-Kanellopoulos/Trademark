@@ -3,6 +3,7 @@ import './Landing.css';
 
 const Nav: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLUListElement | null>(null);
   const btnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -40,10 +41,21 @@ const Nav: React.FC = () => {
     }
   }, [open]);
 
+  // Handle scroll for navbar background
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const onLinkClick = () => setOpen(false);
 
   return (
-    <nav className="nav site-nav" role="navigation" aria-label="Main">
+    <nav className={`nav site-nav ${scrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main">
       <div className="nav-inner">
         <div className="brand">
           <a href="/" aria-label="Trademark home">

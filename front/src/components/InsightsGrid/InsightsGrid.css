@@ -29,7 +29,7 @@
   gap: 12px;
   margin-bottom: 12px;
 }
-.insights__title { font-size: clamp(20px, 2.6vw, 28px); font-weight: 700; margin: 0; }
+.insights__title { font-size: 26px; font-weight: 700; margin: 0; }
 .insights__link { font-size: 14px; color: #4b5563; text-decoration: none; }
 .insights__link:hover { text-decoration: underline; }
 
@@ -66,7 +66,7 @@
 /* Card */
 .insights__card {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 0; /* remove borders as requested */
   border-radius: var(--radius);
   padding: 16px;
   min-height: 140px;
@@ -86,7 +86,7 @@
 }
 
 .insights__card-title {
-  font-size: clamp(16px, 1.6vw, 18px);
+  font-size: 26px;
   line-height: 1.35;
   margin: 0;
   font-weight: 700;
@@ -107,7 +107,7 @@
 
 .insights__comment {
   margin: 6px 0 0;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.45;
   color: #374151;
 }

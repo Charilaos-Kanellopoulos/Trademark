@@ -32,7 +32,7 @@
 .pkg__card{
   position:relative; overflow:hidden; border-radius:14px;
   background: linear-gradient(180deg,#fff, var(--card-bg));
-  border: 1px solid var(--card-border);
+  border: 0; /* remove borders as requested */
   min-height: 255px;
   box-shadow: var(--card-shadow);
   transform: translateZ(0); /* GPU */
@@ -48,6 +48,8 @@
   -webkit-mask:
     linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
+  mask:
+    linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   opacity:.6; pointer-events:none;
 }
 

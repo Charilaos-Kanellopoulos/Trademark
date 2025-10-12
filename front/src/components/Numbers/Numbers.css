@@ -7,7 +7,7 @@
 .numbers-title {
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 36px;
+  font-size: 26px;
   color: var(--dark-blue);
   margin-bottom: 8px;
 }
@@ -15,6 +15,7 @@
 .numbers-description {
   text-align: center;
   color: var(--muted);
+  font-size: 18px;
   margin-bottom: 32px;
 }
 

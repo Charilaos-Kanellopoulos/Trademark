@@ -126,7 +126,7 @@ const Comments: React.FC = () => {
   return (
     <section className="comments">
       <div className="comments__container">
-        <h2 className="comments__title">Τι λένε οι πελάτες μας;</h2>
+        <h2 className="comments__title">Τι είπαν για την ομάδα του Trademark Radar;</h2>
         
         <div className="comments__carousel">
           <button className="comments__nav comments__nav--prev" onClick={prevSlide}>

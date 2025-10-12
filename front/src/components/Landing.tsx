@@ -3,7 +3,7 @@ import './Landing.css';
 import Hero from './Hero/Hero';
 import Numbers from './Numbers/Numbers';
 import ContactBanner from './ContactBanner/ContactBanner';
-import InsightsGrid from './InsightsGrid/InsightsGrid';
+import Comments from './Comments/Comments';
 import HeroIntro from './HeroIntro/HeroIntro';
 // Removed Operation component
 import TabBlock from './TabBlock/TabBlock';
@@ -37,8 +37,7 @@ const Landing: React.FC = () => {
                 { tier: 'GOLD', yearsLabel: 'Έως το πέρας της επιχείρησης', priceLabel: '248€', logoImage: '/logo/GOLD.png' },
             ]} />
             <div className="container">
-                <InsightsGrid />
-
+                <Comments />
             </div>
             
             <ContactBanner />

@@ -31,7 +31,7 @@
 .esg-divider {
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(90deg, var(--light-blue), var(--dark-blue));
   margin: 1.5rem auto;
 }
 
@@ -67,15 +67,15 @@
 }
 
 .esg-button:hover {
-  border-color: #3b82f6;
+  border-color: var(--light-blue);
   background: #f1f5f9;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
 .esg-button.active {
-  border-color: #3b82f6;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-color: var(--light-blue);
+  background: linear-gradient(135deg, var(--light-blue), var(--dark-blue));
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);

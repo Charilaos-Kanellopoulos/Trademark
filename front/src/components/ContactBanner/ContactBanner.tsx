@@ -125,7 +125,7 @@ const ContactBanner: React.FC = () => {
     <div id="contact" className="contact-banner">
       {/* Background video */}
       <video className="contact-banner-video" autoPlay loop muted playsInline>
-        <source src="/section-1.mp4" type="video/mp4" />
+        <source src="/section-2.mp4" type="video/mp4" />
         Το πρόγραμμα περιήγησής σας δεν υποστηρίζει video.
       </video>
       

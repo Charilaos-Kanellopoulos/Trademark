@@ -89,19 +89,9 @@ const Service: React.FC<Props> = ({
                 {/* card content */}
                 <div className="pkg__body">
                   <h3 className="pkg__tier">{p.tier}</h3>
-                  <div className="pkg__features">
-                    <div>24/7 Support</div>
-                    <div>Ετή</div>
-                  </div>
-                </div>
-
-                {/* pricing overlay */}
-                <div className="pkg__overlay">
-                  <div className="pkg__overlay-inner">
-                    <div className="pkg__years">{p.yearsLabel}</div>
-                    <div className="pkg__price-container">
-                      <span className="pkg__amount">{p.priceLabel}</span>
-                    </div>
+                  <div className="pkg__years-label">Έτη: {p.yearsLabel}</div>
+                  <div className="pkg__price-container">
+                    <span className="pkg__amount">{p.priceLabel}</span>
                   </div>
                 </div>
               </article>

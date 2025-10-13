@@ -203,6 +203,21 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+.google_reviews_button {
+  display:inline-block;
+  text-decoration:none;
+  background: var(--dark-blue);
+  text-align: center;
+  color:var(--white);
+  border:0;
+  padding: 15px 32px;
+  font-size: 16px;
+  cursor:pointer;
+  transition: background .15s ease, transform .06s ease;
+  margin-top: 30px;
+}
+.google_reviews_button:hover{ background: var(--white); color: var(--dark-blue); }
+.google_reviews_button:active{ transform: translateY(1px); }
 
 /* Dots Indicator */
 .comments__dots {

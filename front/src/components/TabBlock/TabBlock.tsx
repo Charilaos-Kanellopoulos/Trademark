@@ -21,7 +21,7 @@ const TabBlock: React.FC<Props> = ({ tabs = [], sectionTitle, sectionDescription
     <section id="why" className="tabblock">
       {/* Background video */}
       <video className="tabblock-video" autoPlay loop muted playsInline>
-        <source src="/section-1.mp4" type="video/mp4" />
+        <source src="/section-2.mp4" type="video/mp4" />
         Το πρόγραμμα περιήγησής σας δεν υποστηρίζει video.
       </video>
       

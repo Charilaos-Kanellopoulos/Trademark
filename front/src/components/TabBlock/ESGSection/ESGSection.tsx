@@ -83,22 +83,6 @@ export default function ESGSection({ slides = defaultSlides, ctaLabel = "Μάθ�
         <div id="why" style={{ position: 'absolute', top: '-100px' }}></div>
         <div id="how" style={{ position: 'absolute', top: '-100px' }}></div>
         <div id="who" style={{ position: 'absolute', top: '-100px' }}></div>
-        
-        <div className="esg-content">
-          <h2 
-            className={`esg-title fade-in-${index}`}
-            key={`title-${index}`}
-          >
-            {title}
-          </h2>
-          <p 
-            className={`esg-description fade-in-${index}`}
-            key={`desc-${index}`}
-          >
-            {description}
-          </p>
-        </div>
-
         <div className="esg-buttons">
           <button 
             onClick={() => handleSlideChange(0)} 
@@ -136,6 +120,23 @@ export default function ESGSection({ slides = defaultSlides, ctaLabel = "Μάθ�
             </span>
           </button>
         </div>
+        
+        <div className="esg-content">
+          <h2 
+            className={`esg-title fade-in-${index}`}
+            key={`title-${index}`}
+          >
+            {title}
+          </h2>
+          <p 
+            className={`esg-description fade-in-${index}`}
+            key={`desc-${index}`}
+          >
+            {description}
+          </p>
+        </div>
+
+        
 
       </div>
     </section>

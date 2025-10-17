@@ -86,7 +86,7 @@ const Comments: React.FC = () => {
       setCurrentSlide((prevSlide: number) => {
         return (prevSlide + 1) % totalSlides;
       });
-    }, 5000); // Increased to 5 seconds for better mobile UX
+    }, 30000); // Increased to 30 seconds for better mobile UX
 
     return () => clearInterval(interval);
   }, [totalSlides]);
@@ -150,7 +150,13 @@ const Comments: React.FC = () => {
     <section className="comments">
       <div className="comments__container">
         <h2 className="comments__title">Τι είπαν για την ομάδα του Trademark Radar;</h2>
-
+        <div className="container mb-3">
+          <div className="text-center">
+            <a href="https://www.google.com/search?sca_esv=952d9a3ded5a8be7&sxsrf=AE3TifMugzsqf9PM8J1aj7hQqdUT6HSHSA:1760364121380&q=smiles+trademarks&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E1Z4gQ8-Q0LhGMPI1k3yLZf5R4z8Z6YMEZS9tCs2r7vxumAIpQRD0t1E86TNs4ArF9jSsPA%3D&uds=AOm0WdF1eg4P3bLopmERYJ1GWcYkWKWSdDrN-HJPEkxUDtm2MCwLEP_rG2aOwygImSfGIhFagwXn9OmHC7ng_3cYVNP8cORbHszsfEdwMLDmFyTk-zeFSss&sa=X&ved=2ahUKEwjgg4Wxq6GQAxXihP0HHXZhIwkQ3PALegQIGhAE&biw=1536&bih=695&dpr=1.25" target="_blank" className="google_reviews_button">
+              Δες όλες τις αξιολογήσεις
+            </a>
+          </div>
+        </div>
         <div className="comments__carousel">
           <button className="comments__nav comments__nav--prev" onClick={prevSlide}>
             &#8249;
@@ -193,13 +199,7 @@ const Comments: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="container">
-        <div className="text-center">
-          <a href="https://www.google.com/search?sca_esv=952d9a3ded5a8be7&sxsrf=AE3TifMugzsqf9PM8J1aj7hQqdUT6HSHSA:1760364121380&q=smiles+trademarks&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E1Z4gQ8-Q0LhGMPI1k3yLZf5R4z8Z6YMEZS9tCs2r7vxumAIpQRD0t1E86TNs4ArF9jSsPA%3D&uds=AOm0WdF1eg4P3bLopmERYJ1GWcYkWKWSdDrN-HJPEkxUDtm2MCwLEP_rG2aOwygImSfGIhFagwXn9OmHC7ng_3cYVNP8cORbHszsfEdwMLDmFyTk-zeFSss&sa=X&ved=2ahUKEwjgg4Wxq6GQAxXihP0HHXZhIwkQ3PALegQIGhAE&biw=1536&bih=695&dpr=1.25" target="_blank" className="google_reviews_button">
-            Δες όλες τις αξιολογήσεις
-          </a>
-        </div>
-      </div>
+
     </section>
   );
 };

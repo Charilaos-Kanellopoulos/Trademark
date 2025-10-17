@@ -16,7 +16,7 @@
 .contact-banner {
   position: relative;
   width: 100%;
-  background: var(--banner-inner);
+  height:600px;
   display: flex;
   overflow: hidden;
 }

@@ -9,7 +9,7 @@ type Stat = {
 };
 
 const stats: Stat[] = [
-  { id: 's1', value: 2000, suffix: '+', label: 'Σήματα υπό την προστασία μας' },
+  { id: 's1', value: 2050, suffix: '+', label: 'Σήματα υπό την προστασία μας' },
   { id: 's2', value: 3500, suffix: '+', label: 'Ειδοποιήσεις απειλής' },
   { id: 's3', value: Infinity, label: 'Δυνατότητες παρακολούθησης' },
 

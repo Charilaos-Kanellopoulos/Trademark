@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Tabblock.css';
+import './TabBlock.css';
 import ESGSection from './ESGSection/ESGSection';
 
 export type TabItem = {

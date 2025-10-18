@@ -7,7 +7,7 @@ import Comments from './Comments/Comments';
 import HeroIntro from './HeroIntro/HeroIntro';
 // Removed Operation component
 import Service from './Service/Service';
-import TabBlock from './Tabblock/Tabblock';
+import TabBlock from './TabBlock/TabBlock';
 import Question from './Question/Question';
 
 const Landing: React.FC = () => {

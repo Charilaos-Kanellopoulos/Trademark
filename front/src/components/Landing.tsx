@@ -18,9 +18,6 @@ const Landing: React.FC = () => {
             <Hero video={'./section-1.mp4'}
                 title={'Έχεις σήμα ; Προστάτευσέ το.'}
                 subtitle={'Μια υπηρεσία, μία ολοκληρωμένη προστασία.'}
-                titleSpeedMs={55}
-                subtitleSpeedMs={60}
-                startDelayMs={400}
             />
             {/* Tabbed content section similar to image 3 */}
             <HeroIntro />

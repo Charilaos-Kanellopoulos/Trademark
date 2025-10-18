@@ -21,7 +21,7 @@
 .esg-title {
   font-family: 'Times New Roman', Times, serif;
   font-weight: 400;
-  color: var(--white);
+  color: var(--dark-blue);
   font-size: clamp(26px, 4.8vw, 40px);
   line-height: 1.15;
   margin: 0 0 22px;
@@ -37,7 +37,7 @@
 
 .esg-description {
   font-family: 'Times New Roman', Times, serif;
-  color: var(--white);
+  color: var(--muted);
   font-size: clamp(18px, 2.2vw, 24px);
   line-height: 1.6;
   max-width: 980px;
@@ -55,27 +55,31 @@
 
 .esg-button {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  background: #f8fafc;
-  color: var(--light-blue);
+  background: var(--light-blue);
+  color: var(--white);
   cursor: pointer;
   transition: all 0.3s ease;
-  text-align: center;
-  min-height: 120px;
-  margin-right: 14px;
+  text-align: left;
+  min-height: 60px;
+  margin-right: 0px;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 0px;
+  gap: 1rem;
 }
 
 .esg-button:hover {
   border-color: var(--light-blue);
-  background: #f1f5f9;
+  background: var(--white);
+  color: var(--light-blue);
   transform: translateY(-2px);
 }
 
 .esg-button.active {
-  border-color: var(--light-blue);
-  color: var(--dark-blue);
-  transform: translateY(-2px);
+  background: var(--dark-blue);
+  color: var(--white);
 }
 
 .esg-icon {
@@ -86,6 +90,8 @@
   width: 50px;
   height: 50px;
   object-fit: contain;
+  filter: brightness(1.1);
+ 
 }
 
 .esg-button:hover .esg-icon {
@@ -96,11 +102,6 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
-  color : var(--dark-blue);
-}
-
-.esg-button.active .esg-button-text::after {
-  color: var(--dark-blue);
 }
 
 
@@ -183,13 +184,14 @@
   }
   
   .esg-button {
-    padding: 1.5rem 1rem;
-    min-height: 100px;
+    padding: 1rem 1.5rem;
+    min-height: 50px;
+    flex-direction: row;
   }
   
   .esg-icon {
     font-size: 2rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0;
   }
   
   .esg-button-text {

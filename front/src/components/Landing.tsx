@@ -6,8 +6,9 @@ import ContactBanner from './ContactBanner/ContactBanner';
 import Comments from './Comments/Comments';
 import HeroIntro from './HeroIntro/HeroIntro';
 // Removed Operation component
-import TabBlock from './TabBlock/TabBlock';
 import Service from './Service/Service';
+import TabBlock from './Tabblock/Tabblock';
+import Question from './Question/Question';
 
 const Landing: React.FC = () => {
     return (
@@ -28,6 +29,7 @@ const Landing: React.FC = () => {
                 sectionTitle="Αναλύοντας το Trademark Radar" 
                 sectionDescription="Η νέα εποχή στην προστασία των σηματών. Δείτε περισσότερα για την υπηρεσία." 
             />
+            <Question />
 
             <Numbers title={'Το Trademark Radar σε νούμερα'} description={'Ανακαλύψτε τα νούμερα πίσω από το Trademark Radar:'} />
             

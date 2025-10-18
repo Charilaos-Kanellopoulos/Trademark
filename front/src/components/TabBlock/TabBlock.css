@@ -14,27 +14,6 @@
     overflow: hidden;
 }
 
-/* Video Background */
-.tabblock-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-}
-
-/* Overlay */
-.tabblock-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
 @media (max-width:720px) {
     .tabblock {
         margin: 24px auto;

@@ -52,7 +52,24 @@ const Nav: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const onLinkClick = () => setOpen(false);
+
+  // Smooth scroll with offset for anchor links
+  const onLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    setOpen(false);
+    const href = e.currentTarget.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const el = document.getElementById(href.slice(1));
+      if (el) {
+        e.preventDefault();
+        const nav = document.querySelector('.nav.scrolled') as HTMLElement;
+        const navHeight = nav ? nav.offsetHeight : 80;
+        const rect = el.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const top = rect.top + scrollTop - navHeight - 8; // 8px extra space
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <nav className={`nav site-nav ${scrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main">

@@ -54,11 +54,12 @@
 }
 
 .pkg__title{
-  font-family: "Times New Roman", serif;
-  font-weight:400; 
-  color:#ffffff;
-  font-size:clamp(28px,4vw,48px); 
-  margin:0 0 16px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  color: var(--white);
+  font-size: clamp(26px, 4.8vw, 40px);
+  line-height: 1.15;
+  margin: 0 0 22px;
 }
 
 .pkg__rule{ 
@@ -70,9 +71,12 @@
 }
 
 .pkg__subtitle{ 
-  color:rgba(255,255,255,0.9); 
-  font-size:clamp(16px,2vw,20px); 
-  margin:0 0 50px; 
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--white);
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.6;
+  max-width: 980px;
+  margin: 0 auto 34px;
 }
 
 .pkg__grid{ 
@@ -92,7 +96,7 @@
   background: #ffffff;
   border: 0px solid #e2e8f0;
   width: 320px;
-  height: 320px;
+  height: 350px;
   box-shadow: 0 0px 0px rgba(0,0,0,0.1);
   transform: translateZ(0);
   transition: all .3s ease;
@@ -285,7 +289,7 @@
   
   .pkg__card{
     width: 300px;
-    height: 300px;
+    height: 330px;
   }
   
   .pkg__logo{

@@ -89,7 +89,7 @@ const Service: React.FC<Props> = ({
                 {/* card content */}
                 <div className="pkg__body">
                   <h3 className="pkg__tier">{p.tier}</h3>
-                  <div className="pkg__years-label">Έτη: {p.yearsLabel}</div>
+                  <div className="pkg__years-label">Διάρκεια: {p.yearsLabel}</div>
                   <div className="pkg__price-container">
                     <span className="pkg__amount">{p.priceLabel}</span>
                   </div>

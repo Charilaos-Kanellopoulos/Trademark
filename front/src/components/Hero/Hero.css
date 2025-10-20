@@ -46,17 +46,21 @@
 }
 
 .hero-text h1 {
-  font-size: 40px;
-  margin: 0 0 12px;
-  font-weight: 700;
   font-family: 'Times New Roman', Times, serif;
-  text-align: left;
+  font-weight: 400;
+  color: var(--white);
+  font-size: clamp(26px, 4.8vw, 40px);
+  line-height: 1.15;
+  margin: 0 0 22px;
 }
 
 .hero-text .subtitle {
-  font-size: 26px;
-  opacity: 0.9;
   font-family: 'Times New Roman', Times, serif;
+  color: var(--white);
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.6;
+  max-width: 980px;
+  margin: 0 auto 34px;
   text-align: left;
 }
 

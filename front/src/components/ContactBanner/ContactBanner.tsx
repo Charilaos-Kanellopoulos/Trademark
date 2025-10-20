@@ -8,7 +8,8 @@ type FormState = {
   email: string;
   phone: string;
   callDate: string; // YYYY-MM-DD
-  callTime: string; // HH:mm
+  callTime: string; // HH:mm (από)
+  callTimeEnd: string; // HH:mm (έως)
 };
 
 const initialState: FormState = {
@@ -18,6 +19,7 @@ const initialState: FormState = {
   phone: "",
   callDate: "",
   callTime: "",
+  callTimeEnd: "",
 };
 
 const ContactBanner: React.FC = () => {
@@ -62,10 +64,15 @@ const ContactBanner: React.FC = () => {
     e.preventDefault();
     setSubmitted(true);
 
-    // Απλό validation
-    if (!form.firstName || !form.lastName || !form.email || !form.phone || !form.callDate || !form.callTime) {
+    // Απλό validation - μόνο τα βασικά πεδία είναι υποχρεωτικά
+    if (!form.firstName || !form.lastName || !form.email || !form.phone) {
       return;
     }
+
+    // Δημιουργία string για εύρος ωρών
+    const timeRange = form.callTime && form.callTimeEnd 
+      ? `${form.callTime} - ${form.callTimeEnd}`
+      : form.callTime || '';
 
     const templateParams = {
       firstName: form.firstName,
@@ -73,7 +80,7 @@ const ContactBanner: React.FC = () => {
       email: form.email,
       phone: form.phone,
       callDate: form.callDate,
-      callTime: form.callTime,
+      callTime: timeRange,
       // ensure the admin template receives a recipient address
       // EmailJS templates commonly expect 'to_email' or 'recipient'
       to_email: 'kanel.xaris@gmail.com',
@@ -95,7 +102,7 @@ const ContactBanner: React.FC = () => {
           to_email: form.email,
           firstName: form.firstName,
           callDate: form.callDate,
-          callTime: form.callTime,
+          callTime: timeRange,
         };
         const userRes = await emailjs.send(SERVICE_ID, TEMPLATE_USER, userParams, PUBLIC_KEY);
         console.log('EmailJS user response', userRes);
@@ -201,29 +208,40 @@ const ContactBanner: React.FC = () => {
 
           {/* Ημερομηνία */}
           <label className="contact-banner__field">
-            <span className="contact-banner__label">Ημερομηνία κλήσης*</span>
+            <span className="contact-banner__label">Ημερομηνία κλήσης (προαιρετικό)</span>
             <input
-              className={`contact-banner__input ${submitted && !form.callDate ? "is-invalid" : ""}`}
+              className="contact-banner__input"
               type="date"
               name="callDate"
               aria-label="Ημερομηνία κλήσης"
               value={form.callDate}
               onChange={onChange("callDate")}
-              required
             />
           </label>
 
-          {/* Ώρα */}
+          {/* Ώρα Από */}
           <label className="contact-banner__field">
-            <span className="contact-banner__label">Ώρα κλήσης*</span>
+            <span className="contact-banner__label">Ώρα κλήσης από (προαιρετικό)</span>
             <input
-              className={`contact-banner__input ${submitted && !form.callTime ? "is-invalid" : ""}`}
+              className="contact-banner__input"
               type="time"
               name="callTime"
-              aria-label="Ώρα κλήσης"
+              aria-label="Ώρα κλήσης από"
               value={form.callTime}
               onChange={onChange("callTime")}
-              required
+            />
+          </label>
+
+          {/* Ώρα Έως */}
+          <label className="contact-banner__field">
+            <span className="contact-banner__label">Ώρα κλήσης έως (προαιρετικό)</span>
+            <input
+              className="contact-banner__input"
+              type="time"
+              name="callTimeEnd"
+              aria-label="Ώρα κλήσης έως"
+              value={form.callTimeEnd}
+              onChange={onChange("callTimeEnd")}
             />
           </label>
 

@@ -14,8 +14,8 @@
 }
 
 .esg-content {
-  text-align: center;
-  max-width: 800px;
+  text-align: left;
+  max-width: 700px;
 }
 
 .esg-title {
@@ -40,9 +40,43 @@
   color: var(--muted);
   font-size: clamp(18px, 2.2vw, 24px);
   line-height: 1.6;
-  max-width: 980px;
-  margin: 0 auto 34px;
+  max-width: 700px;
+  margin: 0 0 34px;
   transition: all 0.5s ease;
+}
+
+/* Media layout: text left, image right; alternates with .reverse */
+
+.esg-media-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-areas: "content media";
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+.esg-media-layout.reverse {
+  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-areas: "media content";
+}
+.esg-media-layout .esg-content {
+  grid-area: content;
+}
+.esg-media-layout .esg-media {
+  grid-area: media;
+}
+
+.esg-media {
+  display: flex;
+  justify-content: center;
+}
+
+.esg-media-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.15));
 }
 
 .esg-buttons {
@@ -160,6 +194,42 @@
   }
 }
 
+/* === Animations for ESGSection === */
+.esg-animate-title {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: esgFadeInTitle 0.8s cubic-bezier(.4,1.4,.6,1) 0.1s forwards;
+}
+.esg-animate-desc {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: esgFadeInDesc 0.9s cubic-bezier(.4,1.4,.6,1) 0.3s forwards;
+}
+.esg-animate-img {
+  opacity: 0;
+  transform: scale(0.92) translateY(20px);
+  animation: esgFadeInImg 1s cubic-bezier(.4,1.4,.6,1) 0.5s forwards;
+}
+
+@keyframes esgFadeInTitle {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes esgFadeInDesc {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes esgFadeInImg {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .esg-section {
@@ -176,6 +246,35 @@
   
   .esg-description {
     font-size: 16px;
+  }
+
+
+  .esg-media-layout,
+  .esg-media-layout.reverse {
+    display: flex;
+    flex-direction: column;
+  }
+  .esg-media-layout .esg-content,
+  .esg-media-layout.reverse .esg-content {
+    order: 2;
+  }
+  .esg-media-layout .esg-media,
+  .esg-media-layout.reverse .esg-media {
+    order: 1;
+  }
+
+  .esg-content {
+    text-align: center;
+    margin-bottom: 1.25rem;
+    max-width: 100%;
+  }
+
+  .esg-description {
+    margin: 0 auto 22px;
+  }
+
+  .esg-media-img {
+    max-width: 360px;
   }
   
   .esg-buttons {
@@ -210,5 +309,9 @@
   
   .esg-button {
     padding: 1.25rem 0.75rem;
+  }
+
+  .esg-media-img {
+    max-width: 280px;
   }
 }

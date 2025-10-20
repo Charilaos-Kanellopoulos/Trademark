@@ -31,9 +31,9 @@ const Landing: React.FC = () => {
             <Numbers title={'Το Trademark Radar σε νούμερα'} description={'Ανακαλύψτε τα νούμερα πίσω από το Trademark Radar:'} />
             
             <Service items={[
-                { tier: 'BRONZE', yearsLabel: '3 χρόνια (ΜΕΧΡΙ ΤΗΝ ΑΝΑΝΕΩΣΗ ΤΟΥ ΣΗΜΑΤΟΣ ΣΑΣ)', priceLabel: '124€', logoImage: '/logo/BRONZE.png' },
-                { tier: 'SILVER', yearsLabel: '5 χρόνια (ΜΕΧΡΙ ΤΗΝ ΑΝΑΝΕΩΣΗ ΤΟΥ ΣΗΜΑΤΟΣ ΣΑΣ)', priceLabel: '176.8€', logoImage: '/logo/SILVER.png' },
-                { tier: 'GOLD', yearsLabel: 'ΕΩΣ ΚΑΙ 10 ΧΡΟΝΙΑ (ΜΕΧΡΙ ΤΗΝ ΑΝΑΝΕΩΣΗ ΤΟΥ ΣΗΜΑΤΟΣ ΣΑΣ)', priceLabel: '248€', logoImage: '/logo/GOLD.png' },
+                { tier: 'BRONZE', yearsLabel: '3 χρόνια', priceLabel: '124€', logoImage: '/logo/BRONZE.png' },
+                { tier: 'SILVER', yearsLabel: '5 χρόνια', priceLabel: '176.8€', logoImage: '/logo/SILVER.png' },
+                { tier: 'GOLD', yearsLabel: 'ΕΩΣ ΚΑΙ 10 ΧΡΟΝΙΑ (μέχρι την ανανέωση του σήματος σας)', priceLabel: '248€', logoImage: '/logo/GOLD.png' },
             ]} />
             <div className="container">
                 <Comments />

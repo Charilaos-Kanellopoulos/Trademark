@@ -57,7 +57,8 @@
 .hero-text .subtitle {
   font-family: 'Times New Roman', Times, serif;
   color: var(--white);
-  font-size: clamp(18px, 2.2vw, 24px);
+  /* Increased subtitle font size for better emphasis */
+  font-size: clamp(20px, 3vw, 28px);
   line-height: 1.6;
   max-width: 980px;
   margin: 0 auto 34px;

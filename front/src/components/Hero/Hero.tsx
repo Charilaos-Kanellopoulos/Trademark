@@ -33,9 +33,9 @@ const Hero: React.FC<Props> = ({
           </h1>
 
           {subtitle && (
-            <p className="hero-subtitle slide-in-left-delayed">
+            <h4 className="hero-subtitle slide-in-left-delayed">
               {subtitle}
-            </p>
+            </h4>
           )}
 
           <div className="hero-cta">

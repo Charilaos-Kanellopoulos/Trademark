@@ -140,7 +140,7 @@ const ContactBanner: React.FC = () => {
       <div className="contact-banner-overlay"></div>
       
       <div className="contact-banner__container">
-        <h2 className="contact-banner__title">Φορμά Επικοινωνίας</h2>
+        <h2 className="contact-banner__title">Φόρμα Επικοινωνίας</h2>
 
         <p className="contact-banner__desc">
           Συμπληρώστε τη φόρμα και η ομάδα μας θα επικοινωνήσει μαζί σας την ημέρα και ώρα που εσείς επιθυμείτε.

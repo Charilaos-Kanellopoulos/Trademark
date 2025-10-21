@@ -31,15 +31,7 @@ const defaultSlides: Slide[] = [
   },
   {
     title: "Σε ποιους απευθύνεται το Trademark Radar;",
-    description: `Το Trademark Radar απευθύνεται σε : 
-
-            κάθε δικαιούχο Εμπορικού Σήματος και σε επιχειρήσεις κάθε μεγέθους.
-
-            εταιρείες και επαγγελματίες που διαχειρίζονται σήματα για λογαριασμό πελατών.
-
-            δικηγόρους
-
-            δικηγορικά γραφεία που εξειδικεύονται στο δίκαιο σημάτων.`,
+    description: `Το Trademark Radar απευθύνεται σε κάθε δικαιούχο Εμπορικού Σήματος και σε επιχειρήσεις κάθε μεγέθους, σε εταιρείες και επαγγελματίες που διαχειρίζονται σήματα για λογαριασμό πελατών, σε δικηγόρους και δικηγορικά γραφεία που εξειδικεύονται στο δίκαιο σημάτων. `,
     image: "/imgs/who.png",
     imageAlt: "Σε ποιους απευθύνεται το Trademark Radar;",
   },
@@ -110,12 +102,20 @@ export default function ESGSection({ slides = defaultSlides }: Props) {
                 <p className={`esg-description${isVisible ? ' esg-animate-desc' : ''}`}>{slide.description}</p>
               </div>
               <div className="esg-media">
-                <img
-                  src={slide.image || "/imgs/why.png"}
-                  alt={slide.imageAlt || slide.title}
-                  className={`esg-media-img${isVisible ? ' esg-animate-img' : ''}`}
-                  loading="lazy"
-                />
+                <figure className={`esg-image-card${isVisible ? ' esg-animate-img' : ''}`}>
+                  <div className="esg-image-wrapper">
+                    <img
+                      src={slide.image || "/imgs/why.png"}
+                      alt={slide.imageAlt || slide.title}
+                      className="esg-media-img"
+                      loading="lazy"
+                    />
+                    <div className="esg-image-overlay"></div>
+                  </div>
+                  <figcaption className="esg-image-caption">
+                    {slide.imageAlt || slide.title}
+                  </figcaption>
+                </figure>
               </div>
             </div>
           );

@@ -71,12 +71,96 @@
   justify-content: center;
 }
 
-.esg-media-img {
+/* Image Card with Gradient Overlay */
+.esg-image-card {
+  position: relative;
   width: 100%;
   max-width: 520px;
+  margin: 0;
+  border-radius: 0px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(41, 170, 225, 0.15), 
+              0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgba(41, 170, 225, 0.05), rgba(255, 255, 255, 0.05));
+}
+
+.esg-image-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(41, 170, 225, 0.25), 
+              0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.esg-image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.esg-media-img {
+  width: 100%;
   height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.15));
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.esg-image-card:hover .esg-media-img {
+  transform: scale(1.05);
+}
+
+/* Gradient Overlay - Blue to White */
+.esg-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(41, 170, 225, 0.15) 0%,
+    rgba(41, 170, 225, 0.08) 25%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(41, 170, 225, 0.08) 75%,
+    rgba(41, 170, 225, 0.12) 100%
+  );
+  backdrop-filter: blur(0px);
+  pointer-events: none;
+  transition: backdrop-filter 0.4s ease;
+}
+
+.esg-image-card:hover .esg-image-overlay {
+  backdrop-filter: blur(2px);
+}
+
+/* Caption */
+.esg-image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 32, 63, 0.95) 0%,
+    rgba(0, 32, 63, 0.85) 50%,
+    rgba(0, 32, 63, 0) 100%
+  );
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 1.5rem 1.25rem 1rem;
+  text-align: left;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.esg-image-card:hover .esg-image-caption {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .esg-buttons {
@@ -195,38 +279,46 @@
 }
 
 /* === Animations for ESGSection === */
-.esg-animate-title {
+
+/* Normal layout: content left, image right */
+.esg-media-layout:not(.reverse) .esg-animate-title,
+.esg-media-layout:not(.reverse) .esg-animate-desc {
   opacity: 0;
-  transform: translateY(-30px);
-  animation: esgFadeInTitle 0.8s cubic-bezier(.4,1.4,.6,1) 0.1s forwards;
-}
-.esg-animate-desc {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: esgFadeInDesc 0.9s cubic-bezier(.4,1.4,.6,1) 0.3s forwards;
-}
-.esg-animate-img {
-  opacity: 0;
-  transform: scale(0.92) translateY(20px);
-  animation: esgFadeInImg 1s cubic-bezier(.4,1.4,.6,1) 0.5s forwards;
+  transform: translateX(-60px);
+  animation: esgSlideInFromLeft 0.7s ease-out forwards;
 }
 
-@keyframes esgFadeInTitle {
+.esg-media-layout:not(.reverse) .esg-animate-img {
+  opacity: 0;
+  transform: translateX(60px);
+  animation: esgSlideInFromRight 0.7s ease-out 0.2s forwards;
+}
+
+/* Reverse layout: image left, content right */
+.esg-media-layout.reverse .esg-animate-img {
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: esgSlideInFromLeft 0.7s ease-out forwards;
+}
+
+.esg-media-layout.reverse .esg-animate-title,
+.esg-media-layout.reverse .esg-animate-desc {
+  opacity: 0;
+  transform: translateX(60px);
+  animation: esgSlideInFromRight 0.7s ease-out 0.2s forwards;
+}
+
+@keyframes esgSlideInFromLeft {
   to {
     opacity: 1;
-    transform: none;
+    transform: translateX(0);
   }
 }
-@keyframes esgFadeInDesc {
+
+@keyframes esgSlideInFromRight {
   to {
     opacity: 1;
-    transform: none;
-  }
-}
-@keyframes esgFadeInImg {
-  to {
-    opacity: 1;
-    transform: none;
+    transform: translateX(0);
   }
 }
 
@@ -273,8 +365,13 @@
     margin: 0 auto 22px;
   }
 
-  .esg-media-img {
+  .esg-image-card {
     max-width: 360px;
+  }
+  
+  .esg-image-caption {
+    font-size: 13px;
+    padding: 1.25rem 1rem 0.75rem;
   }
   
   .esg-buttons {
@@ -311,7 +408,12 @@
     padding: 1.25rem 0.75rem;
   }
 
-  .esg-media-img {
+  .esg-image-card {
     max-width: 280px;
+  }
+  
+  .esg-image-caption {
+    font-size: 12px;
+    padding: 1rem 0.75rem 0.5rem;
   }
 }

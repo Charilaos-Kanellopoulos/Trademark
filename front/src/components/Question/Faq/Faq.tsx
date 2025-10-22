@@ -13,7 +13,8 @@ type Props = {
 };
 
 const Faq: React.FC<Props> = ({ items, title = 'Συχνές Ερωτήσεις' }) => {
-  const [activeId, setActiveId] = useState<string | null>(items[0]?.id ?? null);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggleItem = (id: string) => {
@@ -29,7 +30,10 @@ const Faq: React.FC<Props> = ({ items, title = 'Συχνές Ερωτήσεις'
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('faq-item-visible');
+          const index = Number(entry.target.getAttribute('data-faq-index'));
+          if (!isNaN(index)) {
+            setVisibleItems((prev) => new Set(prev).add(index));
+          }
         }
       });
     }, observerOptions);
@@ -57,10 +61,12 @@ const Faq: React.FC<Props> = ({ items, title = 'Συχνές Ερωτήσεις'
               ref={(el) => {
                 itemRefs.current[index] = el;
               }}
-              className={`faq-item faq-item-animate ${activeId === item.id ? 'active' : ''}`}
+              data-faq-index={index}
+              className={`faq-item faq-item-animate ${visibleItems.has(index) ? 'faq-item-visible' : ''} ${activeId === item.id ? 'active' : ''}`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <button
+                type="button"
                 className="faq-header"
                 onClick={() => toggleItem(item.id)}
                 aria-expanded={activeId === item.id}

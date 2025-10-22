@@ -33,7 +33,7 @@ const Landing: React.FC = () => {
             <Service items={[
                 { tier: 'BRONZE', yearsLabel: '3 χρόνια', priceLabel: '124€', logoImage: '/logo/BRONZE.png' },
                 { tier: 'SILVER', yearsLabel: '5 χρόνια', priceLabel: '176.8€', logoImage: '/logo/SILVER.png' },
-                { tier: 'GOLD', yearsLabel: 'ΕΩΣ ΚΑΙ 10 ΧΡΟΝΙΑ (μέχρι την ανανέωση του σήματος σας)', priceLabel: '248€', logoImage: '/logo/GOLD.png' },
+                { tier: 'GOLD', yearsLabel: 'Εως και 10 χρόνια (μέχρι την ανανέωση του σήματος σας)', priceLabel: '248€', logoImage: '/logo/GOLD.png' },
             ]} />
             <div className="container">
                 <Comments />

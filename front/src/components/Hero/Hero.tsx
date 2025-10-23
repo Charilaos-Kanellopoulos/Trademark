@@ -42,6 +42,9 @@ const Hero: React.FC<Props> = ({
             <a href="#why" className="button-hero-cta">
               Περισσότερες Πληροφορίες
             </a>
+            <a href="tel:+302103387344" aria-label="Phone" className="button-hero-cta">
+              Καλέστε μας
+            </a>
           </div>
         </div>
         <div className="hero-shape" aria-hidden></div>

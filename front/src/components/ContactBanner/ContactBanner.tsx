@@ -28,10 +28,10 @@ const ContactBanner: React.FC = () => {
   const [sending, setSending] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_m0ah2gq';
-  const TEMPLATE_ADMIN = process.env.REACT_APP_EMAILJS_TEMPLATE_ADMIN || 'template_ay3jcad';
-  const TEMPLATE_USER = process.env.REACT_APP_EMAILJS_TEMPLATE_USER || 'template_c1f7ro8';
-  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '08heL3LGJTrXR79-N';
+  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_u10bedn';
+  const TEMPLATE_ADMIN = process.env.REACT_APP_EMAILJS_TEMPLATE_ADMIN || 'template_8mgu3oc';
+  const TEMPLATE_USER = process.env.REACT_APP_EMAILJS_TEMPLATE_USER || 'template_kt6kwrd';
+  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'mTSrpQR3LVegJR_E8';
   const ADMIN_EMAIL = process.env.REACT_APP_ADMIN_EMAIL || '';
 
   useEffect(() => {
